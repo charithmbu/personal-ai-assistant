@@ -1,6 +1,6 @@
 from google.adk.agents.llm_agent import Agent
 from .tools import (get_current_datetime,search_long_term_memory,save_long_term_memory,erase_long_term_memory,
-                    calculator)
+                    calculator, get_weather)
 root_agent = Agent(
    model="gemini-3.5-flash-lite",
     name='root_agent',
@@ -57,6 +57,8 @@ root_agent = Agent(
 
     Do not erase memories based on an indirect or
     ambiguous statement.
+    
+    WEATHER: - When the user asks about the weather, ALWAYS use the get_weather tool. - The get_weather tool can retrieve current weather information for a city. - Do not claim that you cannot access live weather when the get_weather tool is available.
     """,
-    tools=[get_current_datetime,search_long_term_memory,save_long_term_memory,erase_long_term_memory,calculator],
+    tools=[get_current_datetime,search_long_term_memory,save_long_term_memory,erase_long_term_memory,calculator, get_weather],
 )

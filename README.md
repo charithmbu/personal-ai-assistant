@@ -221,3 +221,61 @@ docker run -d \
 - llm doesnt want to deal with python objects.our tools need to return understandable outputs.this is the reason wrapup methods in `tools.py` are needed
 - created `search_long_term_memory()`,`save_long_term_memory()`,`erase_long_term_memory()` in `tools.py`
 - updated `agent.py` with required instruction prompt and included the above tools.
+
+
+### Day 4
+## 🌦️ Weather API
+
+Implemented a weather tool using **Open-Meteo API**. The assistant can understand a user's weather-related question, identify the city, retrieve the current weather, and return the result in a readable format.
+
+### 🔄 Flow
+
+```text
+User
+  ↓
+Gemini / ADK Agent
+  ↓
+get_weather(city)
+  ↓
+Open-Meteo Geocoding API
+  ↓
+City → Latitude + Longitude
+  ↓
+Open-Meteo Forecast API
+  ↓
+Temperature + Humidity + Wind Speed + Weather Code
+  ↓
+Process & Format Data
+  ↓
+Gemini / ADK Agent
+  ↓
+User
+```
+
+### 🛠️ Implementation
+
+* Created `weather.py` containing the `get_weather()` function.
+* Used Python `requests` to communicate with Open-Meteo APIs.
+* Used the **Geocoding API** to convert a city name into coordinates.
+* Used the **Forecast API** to retrieve current weather data.
+* Converted numerical weather codes into readable descriptions.
+* Added error handling for API failures and invalid cities.
+* Registered `get_weather()` as a tool for the ADK agent.
+
+### 📚 What I Learned
+
+```text
+AI Agent
+   ↓
+Tool Calling
+   ↓
+External API
+   ↓
+JSON Data
+   ↓
+Data Processing
+   ↓
+AI Response
+```
+
+This implementation helped me understand how an AI agent can use **external APIs as tools** to provide real-time information instead of relying only on the model's knowledge.
