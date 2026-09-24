@@ -223,7 +223,7 @@ docker run -d \
 - updated `agent.py` with required instruction prompt and included the above tools.
 
 
-### Day 4
+### Day 5
 ## 🌦️ Weather API
 
 Implemented a weather tool using **Open-Meteo API**. The assistant can understand a user's weather-related question, identify the city, retrieve the current weather, and return the result in a readable format.
